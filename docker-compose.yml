@@ -1,0 +1,17 @@
+services:
+  # Dịch vụ MySQL
+  mysqldb:
+    image: mysql:8.0.40-debian
+    container_name: mysql
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=root  # Đặt mật khẩu cho user root
+      - MYSQL_DATABASE=test_thread # Tạo cơ sở dữ liệu mặc định
+    ports:
+      - "3306:3306" # Mở cổng 3306 cho MySQL
+    volumes:
+      - db_data:/var/lib/mysql    # Volume để lưu trữ dữ liệu của MySQL
+
+  # Dịch vụ server (Spring Boot)
+volumes:
+  db_data: 
